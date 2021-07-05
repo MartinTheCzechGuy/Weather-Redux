@@ -7,7 +7,6 @@
 
 protocol State: AnyObject {
     associatedtype ReduxStore: Store
-    var deepcopy: Self { get }
     
     func initialize(store: ReduxStore)
 }

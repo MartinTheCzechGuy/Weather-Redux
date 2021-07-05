@@ -20,6 +20,7 @@
 		5BCC8BA0268772E500972773 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC8B9F268772E500972773 /* CurrentWeather.swift */; };
 		5BCC8BA22687731300972773 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC8BA12687731300972773 /* WeatherError.swift */; };
 		5BCC8BA52687735E00972773 /* Publisher+mapToResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC8BA42687735E00972773 /* Publisher+mapToResult.swift */; };
+		5BDDB3CD2693022900ADACE4 /* RootState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDDB3CC2693022900ADACE4 /* RootState.swift */; };
 		5BFD4F7A2680F8BF0020E99C /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD4F792680F8BF0020E99C /* WeatherApp.swift */; };
 		5BFD4F7E2680F8C70020E99C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD4F7D2680F8C70020E99C /* Assets.xcassets */; };
 		5BFD4F812680F8C70020E99C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD4F802680F8C70020E99C /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		5BCC8B9F268772E500972773 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		5BCC8BA12687731300972773 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		5BCC8BA42687735E00972773 /* Publisher+mapToResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+mapToResult.swift"; sourceTree = "<group>"; };
+		5BDDB3CC2693022900ADACE4 /* RootState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootState.swift; sourceTree = "<group>"; };
 		5BFD4F762680F8BF0020E99C /* Weather - Redux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather - Redux.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD4F792680F8BF0020E99C /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		5BFD4F7D2680F8C70020E99C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				5BCC8B9726876F8900972773 /* Composer.swift */,
 				5B13B4422688790500C74A09 /* Thunk.swift */,
 				5B13B4442688796F00C74A09 /* ThunkMiddleware.swift */,
+				5BDDB3CC2693022900ADACE4 /* RootState.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				5B13B441268864E700C74A09 /* CityDetailView.swift in Sources */,
 				5BFD4F8C2680F9380020E99C /* Reducer.swift in Sources */,
 				5BFD4F902680F98E0020E99C /* Store.swift in Sources */,
+				5BDDB3CD2693022900ADACE4 /* RootState.swift in Sources */,
 				5B13B4432688790500C74A09 /* Thunk.swift in Sources */,
 				5B13B4452688796F00C74A09 /* ThunkMiddleware.swift in Sources */,
 				5BCC8B9826876F8900972773 /* Composer.swift in Sources */,

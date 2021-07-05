@@ -8,7 +8,7 @@
 import Combine
 
 @propertyWrapper
-final class ReduxBindable<ReduxStore: Store, ReduxState, Action: BindingUpdateAction>
+final class ReduxBindable<ReduxStore: Store, ReduxState, Action: BindingUpdateAction>: ObservableObject
 where Action.ReduxState == ReduxState
 //      ,
 //      ReduxStore.ReduxReducer.ReduxState == ReduxStore.ReduxState,

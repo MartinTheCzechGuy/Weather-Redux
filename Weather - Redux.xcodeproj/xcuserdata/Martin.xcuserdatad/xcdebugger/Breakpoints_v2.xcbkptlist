@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FA4C9133-6E63-4E29-85DF-E4978D41AA9E"
-            shouldBeEnabled = "Yes"
+            uuid = "189D9236-BC21-498C-A4A5-44FDC1433A5B"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Weather - Redux/Scenes/City Search/Redux/CitySearchStore.swift"
+            filePath = "Weather - Redux/Scenes/City Search/SearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "state"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>

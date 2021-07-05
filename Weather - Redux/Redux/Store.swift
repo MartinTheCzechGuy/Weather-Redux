@@ -34,18 +34,14 @@ extension Store {
     
     func reduce(_ action: Action) {
         objectWillChange.send()
-        print("😍 aaaaaa - \((state as! CitySearchState).lastCharacterEntered).")
-
-        state = ReduxReducer.reduce(action, state: state)
-    
-        print("😍 bbbbbb - \((state as! CitySearchState).lastCharacterEntered).")
+        state = ReduxReducer.reduce(action, state: state)    
     }
     
     static func createStore(
         reducer: ReduxReducer.Type,
         preloadedState: ReduxState?
     ) -> Self {
-        return Self.init(state: preloadedState)
+        Self.init(state: preloadedState)
     }
     
     static func createStore(
@@ -53,7 +49,7 @@ extension Store {
         preloadedState: ReduxState?,
         enhancer: StoreEnhancer
     ) -> Self {
-        return enhancer(createStore)(reducer, preloadedState)
+        enhancer(createStore)(reducer, preloadedState)
     }
     
     func initialize() -> Self {

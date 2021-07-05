@@ -11,11 +11,7 @@ final class CitySearchStore: Store {
         
     typealias ReduxReducer = CitySearchReducer
     
-    var state: CitySearchState {
-        didSet {
-            print("set value 1 \(state.results.count)")
-        }
-    }
+    var state: CitySearchState
     var objectWillChange = ObservableObjectPublisher()
     lazy var storedDispatch = defaultDispatch
     

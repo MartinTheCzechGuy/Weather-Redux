@@ -14,14 +14,14 @@ enum CitySearchReducer: Reducer {
         switch action {
         case let action as UpdateSearchedText:
             newState.$searchedCity = action.state
-            newState.lastCharacterEntered = Date()
-        //case let action as SearchCity:
         case let action as SetSearchResult:
+            newState.showLoading = false
             newState.results = action.state
-            newState.lastCharacterEntered = nil
         case let action as SetError:
+            newState.showLoading = false
             newState.$showError = action.state
-            newState.lastCharacterEntered = nil
+        case _ as StartLoading:
+            newState.showLoading = true
         default:
             break
         }
