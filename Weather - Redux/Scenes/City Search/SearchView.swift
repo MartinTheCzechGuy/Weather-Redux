@@ -37,7 +37,6 @@ struct SearchView: View {
                                 )
                             )
                             .cornerRadius(20)
-                            .shadow(color: .gray, radius: 10)
 
                         Button(
                             action: {

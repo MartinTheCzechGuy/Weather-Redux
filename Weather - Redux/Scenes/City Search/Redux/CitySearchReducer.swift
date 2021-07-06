@@ -19,13 +19,14 @@ enum CitySearchReducer: Reducer {
             newState.results = action.state
         case let action as SetError:
             newState.showLoading = false
+            newState.results.removeAll()
             newState.$showError = action.state
         case _ as StartLoading:
             newState.showLoading = true
         default:
             break
         }
-        
+                
         return newState
     }
 }
