@@ -5,16 +5,10 @@
 //  Created by Martin on 26.06.2021.
 //
 
-struct UpdateSearchedText: BindingUpdateAction {
-    let state: String
+enum CitySearchAction {
+    case fetchWeather
+    case setSearchedValue(value: String)
+    case setWeatherResult(_ weather: [CurrentWeather])
+    case startLoading
+    case showError(Bool)
 }
-
-struct SetSearchResult: BindingUpdateAction {
-    let state: [CurrentWeather]
-}
-
-struct SetError: BindingUpdateAction {
-    let state: Bool
-}
-
-struct StartLoading: Action {}

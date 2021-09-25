@@ -6,25 +6,35 @@
 //
 
 import Combine
+import UIKit
 import SwiftUI
 
 struct SearchView: View {
     
-    @EnvironmentObject var store: CitySearchStore
-    private let repository: CurrentWeatherRepositoryType
+    @EnvironmentObject var store: AppStore
     
-    init(repository: CurrentWeatherRepositoryType) {
-        self.repository = repository
+    init() {
+        UITableView.appearance().backgroundColor = .none
     }
     
     var body: some View {
-        if store.state.showLoading {
+        let searchedCity: Binding<String> = .init(
+            get: { store.state.searchedCity.searchedCity },
+            set: { store.dispatch(.citySearch(.setSearchedValue(value: $0))) }
+        )
+        
+        let showingError: Binding<Bool> = .init(
+            get: { store.state.searchedCity.isShowingError },
+            set: { store.dispatch(.citySearch(.showError($0))) }
+        )
+        
+        if store.state.searchedCity.isLoading {
             ProgressView(label: { Text("Loading data...") })
         } else {
             NavigationView {
                 VStack {
                     HStack {
-                        TextField("Enter city name...", text: $store.state.searchedCity)
+                        TextField("Enter city name...", text: searchedCity)
                             .padding(10)
                             .background(
                                 LinearGradient(
@@ -37,17 +47,17 @@ struct SearchView: View {
                                 )
                             )
                             .cornerRadius(20)
-
+                        
                         Button(
                             action: {
-                                store.dispatch(StartLoading())
-                                store.dispatch(searchCity)
+                                store.dispatch(.citySearch(.startLoading))
+                                store.dispatch(.citySearch(.fetchWeather))
                             },
                             label: { Image(systemName: "magnifyingglass") }
                         )
                     }
-                                
-                    if (!store.state.results.isEmpty) {
+                    
+                    if (!store.state.searchedCity.results.isEmpty) {
                         HStack {
                             VStack { Divider().background(Color.black) }.padding(10)
                             Text("Results").foregroundColor(.black)
@@ -55,49 +65,38 @@ struct SearchView: View {
                         }
                         .padding()
                     }
-
-                    List(store.state.results, id: \.self) { weather in
-                        NavigationLink(
-                            destination: CityDetailView(
-                                background: weather.weather.background,
-                                iconName: weather.weather.iconName,
-                                description: weather.description,
-                                temperature: weather.temperature,
-                                pressure: weather.pressure,
-                                humidity: weather.humidity,
-                                city: weather.city
-                            ),
-                            label: {
-                                Text(weather.city)
-                            })
+                    
+                    List {
+                        ForEach(store.state.searchedCity.results) { weather in
+                            NavigationLink(
+                                destination: CityDetailView(
+                                    background: weather.weather.background,
+                                    iconName: weather.weather.iconName,
+                                    description: weather.description,
+                                    temperature: weather.temperature,
+                                    pressure: weather.pressure,
+                                    humidity: weather.humidity,
+                                    city: weather.city
+                                ),
+                                label: {
+                                    Text(weather.city)
+                                }
+                            )
+                            .padding()
+                        }
+                        .border(Color.gray)
+                        .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     }
-                    .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 }
-                .padding()
-                .alert(isPresented: $store.state.showError) { () -> Alert in
+                .alert(isPresented: showingError) { () -> Alert in
                     Alert(
-                        title: Text("The city name \(store.state.searchedCity) not found. Please try a different search."),
-                        dismissButton: .default(Text("OK"))
+                        title: Text("The city name \(store.state.searchedCity.searchedCity) not found. Please try a different search."),
+                        dismissButton: .default(Text("OK"), action: { store.dispatch(.citySearch(.showError(false))) })
                     )
                 }
                 .navigationTitle("Search")
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-        }
-    }
-    
-    var searchCity: Thunk<CitySearchStore> {
-        Thunk<CitySearchStore> { dispatch, getState in
-            let state = getState()
-                        
-            repository.currentWeather(for: state.searchedCity) { result in
-                print("received new value \(result)")
-                switch result {
-                case .success(let weather):
-                    dispatch(SetSearchResult(state: [weather]))
-                case .failure(_):
-                    dispatch(SetError(state: true))
-                }
+                .navigationViewStyle(StackNavigationViewStyle())
+                .padding()
             }
         }
     }

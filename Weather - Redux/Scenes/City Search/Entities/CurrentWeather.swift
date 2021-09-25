@@ -5,7 +5,10 @@
 //  Created by Martin on 26.06.2021.
 //
 
-struct CurrentWeather {
+import Foundation
+
+struct CurrentWeather: Identifiable {
+    let id = UUID()
     let city: String
     let weather: WeatherCode
     let description: String
