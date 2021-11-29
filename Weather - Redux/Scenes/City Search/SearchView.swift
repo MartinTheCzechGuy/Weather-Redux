@@ -83,9 +83,10 @@ struct SearchView: View {
                                 }
                             )
                             .padding()
+                            .border(Color(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, opacity: 1))
                         }
-                        .border(Color.gray)
                         .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                        .padding()
                     }
                 }
                 .alert(isPresented: showingError) { () -> Alert in
