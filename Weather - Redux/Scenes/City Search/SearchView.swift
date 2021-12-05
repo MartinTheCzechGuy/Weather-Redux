@@ -11,7 +11,7 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @EnvironmentObject var store: AppStore
+    @EnvironmentObject private var store: AppStore
     
     init() {
         UITableView.appearance().backgroundColor = .none
